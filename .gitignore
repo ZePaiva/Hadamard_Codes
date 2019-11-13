@@ -5,3 +5,5 @@
 **/testbench/
 **/*_sim
 **/output_files/
+
+**/*.bak
