@@ -1,5 +1,5 @@
 Flow report for parallel_decoder
-Wed Nov 13 16:03:16 2019
+Wed Nov 13 19:36:01 2019
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -40,7 +40,7 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Flow Summary                                                                  ;
 +---------------------------------+---------------------------------------------+
-; Flow Status                     ; Successful - Wed Nov 13 16:03:16 2019       ;
+; Flow Status                     ; Successful - Wed Nov 13 19:36:01 2019       ;
 ; Quartus Prime Version           ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                   ; parallel_decoder                            ;
 ; Top-level Entity Name           ; parallel_decoder                            ;
@@ -67,7 +67,7 @@ refer to the applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 11/13/2019 15:59:51 ;
+; Start date & time ; 11/13/2019 19:08:21 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; parallel_decoder    ;
 +-------------------+---------------------+
@@ -78,13 +78,17 @@ refer to the applicable agreement for further details.
 +-------------------------------------+----------------------------------------+---------------+-------------+----------------+
 ; Assignment Name                     ; Value                                  ; Default Value ; Entity Name ; Section Id     ;
 +-------------------------------------+----------------------------------------+---------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID               ; 238368720955948.157366079127543        ; --            ; --          ; --             ;
+; COMPILER_SIGNATURE_ID               ; 238368720955948.157367210103981        ; --            ; --          ; --             ;
 ; EDA_OUTPUT_DATA_FORMAT              ; Verilog Hdl                            ; --            ; --          ; eda_simulation ;
 ; EDA_SIMULATION_TOOL                 ; ModelSim-Altera (Verilog)              ; <None>        ; --          ; --             ;
 ; EDA_TIME_SCALE                      ; 1 ps                                   ; --            ; --          ; eda_simulation ;
+; MAX_CORE_JUNCTION_TEMP              ; 85                                     ; --            ; --          ; --             ;
+; MIN_CORE_JUNCTION_TEMP              ; 0                                      ; --            ; --          ; --             ;
 ; PARTITION_COLOR                     ; -- (Not supported for targeted family) ; --            ; --          ; Top            ;
 ; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family) ; --            ; --          ; Top            ;
 ; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family) ; --            ; --          ; Top            ;
+; POWER_BOARD_THERMAL_MODEL           ; None (CONSERVATIVE)                    ; --            ; --          ; --             ;
+; POWER_PRESET_COOLING_SOLUTION       ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW  ; --            ; --          ; --             ;
 ; PROJECT_OUTPUT_DIRECTORY            ; output_files                           ; --            ; --          ; --             ;
 +-------------------------------------+----------------------------------------+---------------+-------------+----------------+
 
@@ -94,10 +98,31 @@ refer to the applicable agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:26     ; 1.0                     ; 995 MB              ; 00:00:44                           ;
-; EDA Netlist Writer   ; 00:00:01     ; 1.0                     ; 1095 MB             ; 00:00:01                           ;
+; Analysis & Synthesis ; 00:00:15     ; 1.0                     ; 994 MB              ; 00:00:31                           ;
+; EDA Netlist Writer   ; 00:00:00     ; 1.0                     ; 1095 MB             ; 00:00:01                           ;
+; EDA Netlist Writer   ; 00:00:01     ; 1.0                     ; 1103 MB             ; 00:00:01                           ;
+; EDA Netlist Writer   ; 00:00:00     ; 1.0                     ; 1096 MB             ; 00:00:01                           ;
+; EDA Netlist Writer   ; 00:00:01     ; 1.0                     ; 1099 MB             ; 00:00:01                           ;
+; EDA Netlist Writer   ; 00:00:00     ; 1.0                     ; 1095 MB             ; 00:00:01                           ;
+; EDA Netlist Writer   ; 00:00:01     ; 1.0                     ; 1103 MB             ; 00:00:01                           ;
 ; EDA Netlist Writer   ; 00:00:00     ; 1.0                     ; 1099 MB             ; 00:00:01                           ;
-; Total                ; 00:00:27     ; --                      ; --                  ; 00:00:46                           ;
+; EDA Netlist Writer   ; 00:00:00     ; 1.0                     ; 1100 MB             ; 00:00:01                           ;
+; EDA Netlist Writer   ; 00:00:01     ; 1.0                     ; 1099 MB             ; 00:00:01                           ;
+; EDA Netlist Writer   ; 00:00:01     ; 1.0                     ; 1100 MB             ; 00:00:01                           ;
+; EDA Netlist Writer   ; 00:00:00     ; 1.0                     ; 1095 MB             ; 00:00:01                           ;
+; EDA Netlist Writer   ; 00:00:00     ; 1.0                     ; 1099 MB             ; 00:00:01                           ;
+; EDA Netlist Writer   ; 00:00:00     ; 1.0                     ; 1099 MB             ; 00:00:01                           ;
+; EDA Netlist Writer   ; 00:00:00     ; 1.0                     ; 1100 MB             ; 00:00:01                           ;
+; EDA Netlist Writer   ; 00:00:00     ; 1.0                     ; 1095 MB             ; 00:00:01                           ;
+; EDA Netlist Writer   ; 00:00:01     ; 1.0                     ; 1099 MB             ; 00:00:01                           ;
+; EDA Netlist Writer   ; 00:00:01     ; 1.0                     ; 1096 MB             ; 00:00:01                           ;
+; EDA Netlist Writer   ; 00:00:00     ; 1.0                     ; 1099 MB             ; 00:00:01                           ;
+; EDA Netlist Writer   ; 00:00:00     ; 1.0                     ; 1096 MB             ; 00:00:01                           ;
+; EDA Netlist Writer   ; 00:00:00     ; 1.0                     ; 1103 MB             ; 00:00:01                           ;
+; EDA Netlist Writer   ; 00:00:00     ; 1.0                     ; 1099 MB             ; 00:00:01                           ;
+; EDA Netlist Writer   ; 00:00:01     ; 1.0                     ; 1099 MB             ; 00:00:01                           ;
+; EDA Netlist Writer   ; 00:00:00     ; 1.0                     ; 1103 MB             ; 00:00:01                           ;
+; Total                ; 00:00:23     ; --                      ; --                  ; 00:00:54                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -109,6 +134,27 @@ refer to the applicable agreement for further details.
 ; Analysis & Synthesis ; zephyrum         ; Manjaro Linux ; Manjaro Linux ; x86_64         ;
 ; EDA Netlist Writer   ; zephyrum         ; Manjaro Linux ; Manjaro Linux ; x86_64         ;
 ; EDA Netlist Writer   ; zephyrum         ; Manjaro Linux ; Manjaro Linux ; x86_64         ;
+; EDA Netlist Writer   ; zephyrum         ; Manjaro Linux ; Manjaro Linux ; x86_64         ;
+; EDA Netlist Writer   ; zephyrum         ; Manjaro Linux ; Manjaro Linux ; x86_64         ;
+; EDA Netlist Writer   ; zephyrum         ; Manjaro Linux ; Manjaro Linux ; x86_64         ;
+; EDA Netlist Writer   ; zephyrum         ; Manjaro Linux ; Manjaro Linux ; x86_64         ;
+; EDA Netlist Writer   ; zephyrum         ; Manjaro Linux ; Manjaro Linux ; x86_64         ;
+; EDA Netlist Writer   ; zephyrum         ; Manjaro Linux ; Manjaro Linux ; x86_64         ;
+; EDA Netlist Writer   ; zephyrum         ; Manjaro Linux ; Manjaro Linux ; x86_64         ;
+; EDA Netlist Writer   ; zephyrum         ; Manjaro Linux ; Manjaro Linux ; x86_64         ;
+; EDA Netlist Writer   ; zephyrum         ; Manjaro Linux ; Manjaro Linux ; x86_64         ;
+; EDA Netlist Writer   ; zephyrum         ; Manjaro Linux ; Manjaro Linux ; x86_64         ;
+; EDA Netlist Writer   ; zephyrum         ; Manjaro Linux ; Manjaro Linux ; x86_64         ;
+; EDA Netlist Writer   ; zephyrum         ; Manjaro Linux ; Manjaro Linux ; x86_64         ;
+; EDA Netlist Writer   ; zephyrum         ; Manjaro Linux ; Manjaro Linux ; x86_64         ;
+; EDA Netlist Writer   ; zephyrum         ; Manjaro Linux ; Manjaro Linux ; x86_64         ;
+; EDA Netlist Writer   ; zephyrum         ; Manjaro Linux ; Manjaro Linux ; x86_64         ;
+; EDA Netlist Writer   ; zephyrum         ; Manjaro Linux ; Manjaro Linux ; x86_64         ;
+; EDA Netlist Writer   ; zephyrum         ; Manjaro Linux ; Manjaro Linux ; x86_64         ;
+; EDA Netlist Writer   ; zephyrum         ; Manjaro Linux ; Manjaro Linux ; x86_64         ;
+; EDA Netlist Writer   ; zephyrum         ; Manjaro Linux ; Manjaro Linux ; x86_64         ;
+; EDA Netlist Writer   ; zephyrum         ; Manjaro Linux ; Manjaro Linux ; x86_64         ;
+; EDA Netlist Writer   ; zephyrum         ; Manjaro Linux ; Manjaro Linux ; x86_64         ;
 +----------------------+------------------+---------------+---------------+----------------+
 
 
@@ -117,6 +163,27 @@ refer to the applicable agreement for further details.
 ------------
 quartus_map --read_settings_files=on --write_settings_files=off parallel_decoder -c parallel_decoder
 quartus_eda --gen_testbench --tool=modelsim_oem --format=vhdl --write_settings_files=off parallel_decoder -c parallel_decoder --vector_source=/home/zero/Documents/UniAv/4_ano/ACA/Hadamard_Codes/decoder/parallel_decoder/parallel_decoder.vwf --testbench_file=/home/zero/Documents/UniAv/4_ano/ACA/Hadamard_Codes/decoder/parallel_decoder/simulation/qsim/parallel_decoder.vwf.vht
+quartus_eda --write_settings_files=off --simulation=on --functional=on --flatten_buses=off --tool=modelsim_oem --format=vhdl --output_directory=/home/zero/Documents/UniAv/4_ano/ACA/Hadamard_Codes/decoder/parallel_decoder/simulation/qsim/ parallel_decoder -c parallel_decoder
+quartus_eda --gen_testbench --tool=modelsim_oem --format=vhdl --write_settings_files=off parallel_decoder -c parallel_decoder --vector_source=/home/zero/Documents/UniAv/4_ano/ACA/Hadamard_Codes/decoder/parallel_decoder/parallel_decoder.vwf --testbench_file=/home/zero/Documents/UniAv/4_ano/ACA/Hadamard_Codes/decoder/parallel_decoder/simulation/qsim/parallel_decoder.vwf.vht
+quartus_eda --write_settings_files=off --simulation=on --functional=on --flatten_buses=off --tool=modelsim_oem --format=vhdl --output_directory=/home/zero/Documents/UniAv/4_ano/ACA/Hadamard_Codes/decoder/parallel_decoder/simulation/qsim/ parallel_decoder -c parallel_decoder
+quartus_eda --gen_testbench --tool=modelsim_oem --format=vhdl --write_settings_files=off parallel_decoder -c parallel_decoder --vector_source=/home/zero/Documents/UniAv/4_ano/ACA/Hadamard_Codes/decoder/parallel_decoder/parallel_decoder.vwf --testbench_file=/home/zero/Documents/UniAv/4_ano/ACA/Hadamard_Codes/decoder/parallel_decoder/simulation/qsim/parallel_decoder.vwf.vht
+quartus_eda --write_settings_files=off --simulation=on --functional=on --flatten_buses=off --tool=modelsim_oem --format=vhdl --output_directory=/home/zero/Documents/UniAv/4_ano/ACA/Hadamard_Codes/decoder/parallel_decoder/simulation/qsim/ parallel_decoder -c parallel_decoder
+quartus_eda --gen_testbench --tool=modelsim_oem --format=vhdl --write_settings_files=off parallel_decoder -c parallel_decoder --vector_source=/home/zero/Documents/UniAv/4_ano/ACA/Hadamard_Codes/decoder/parallel_decoder/parallel_decoder.vwf --testbench_file=/home/zero/Documents/UniAv/4_ano/ACA/Hadamard_Codes/decoder/parallel_decoder/simulation/qsim/parallel_decoder.vwf.vht
+quartus_eda --write_settings_files=off --simulation=on --functional=on --flatten_buses=off --tool=modelsim_oem --format=vhdl --output_directory=/home/zero/Documents/UniAv/4_ano/ACA/Hadamard_Codes/decoder/parallel_decoder/simulation/qsim/ parallel_decoder -c parallel_decoder
+quartus_eda --gen_testbench --tool=modelsim_oem --format=vhdl --write_settings_files=off parallel_decoder -c parallel_decoder --vector_source=/home/zero/Documents/UniAv/4_ano/ACA/Hadamard_Codes/decoder/parallel_decoder/parallel_decoder.vwf --testbench_file=/home/zero/Documents/UniAv/4_ano/ACA/Hadamard_Codes/decoder/parallel_decoder/simulation/qsim/parallel_decoder.vwf.vht
+quartus_eda --write_settings_files=off --simulation=on --functional=on --flatten_buses=off --tool=modelsim_oem --format=vhdl --output_directory=/home/zero/Documents/UniAv/4_ano/ACA/Hadamard_Codes/decoder/parallel_decoder/simulation/qsim/ parallel_decoder -c parallel_decoder
+quartus_eda --gen_testbench --tool=modelsim_oem --format=vhdl --write_settings_files=off parallel_decoder -c parallel_decoder --vector_source=/home/zero/Documents/UniAv/4_ano/ACA/Hadamard_Codes/decoder/parallel_decoder/parallel_decoder.vwf --testbench_file=/home/zero/Documents/UniAv/4_ano/ACA/Hadamard_Codes/decoder/parallel_decoder/simulation/qsim/parallel_decoder.vwf.vht
+quartus_eda --write_settings_files=off --simulation=on --functional=on --flatten_buses=off --tool=modelsim_oem --format=vhdl --output_directory=/home/zero/Documents/UniAv/4_ano/ACA/Hadamard_Codes/decoder/parallel_decoder/simulation/qsim/ parallel_decoder -c parallel_decoder
+quartus_eda --gen_testbench --tool=modelsim_oem --format=vhdl --write_settings_files=off parallel_decoder -c parallel_decoder --vector_source=/home/zero/Documents/UniAv/4_ano/ACA/Hadamard_Codes/decoder/parallel_decoder/parallel_decoder.vwf --testbench_file=/home/zero/Documents/UniAv/4_ano/ACA/Hadamard_Codes/decoder/parallel_decoder/simulation/qsim/parallel_decoder.vwf.vht
+quartus_eda --write_settings_files=off --simulation=on --functional=on --flatten_buses=off --tool=modelsim_oem --format=vhdl --output_directory=/home/zero/Documents/UniAv/4_ano/ACA/Hadamard_Codes/decoder/parallel_decoder/simulation/qsim/ parallel_decoder -c parallel_decoder
+quartus_eda --gen_testbench --tool=modelsim_oem --format=vhdl --write_settings_files=off parallel_decoder -c parallel_decoder --vector_source=/home/zero/Documents/UniAv/4_ano/ACA/Hadamard_Codes/decoder/parallel_decoder/parallel_decoder.vwf --testbench_file=/home/zero/Documents/UniAv/4_ano/ACA/Hadamard_Codes/decoder/parallel_decoder/simulation/qsim/parallel_decoder.vwf.vht
+quartus_eda --write_settings_files=off --simulation=on --functional=on --flatten_buses=off --tool=modelsim_oem --format=vhdl --output_directory=/home/zero/Documents/UniAv/4_ano/ACA/Hadamard_Codes/decoder/parallel_decoder/simulation/qsim/ parallel_decoder -c parallel_decoder
+quartus_eda --gen_testbench --tool=modelsim_oem --format=vhdl --write_settings_files=off parallel_decoder -c parallel_decoder --vector_source=/home/zero/Documents/UniAv/4_ano/ACA/Hadamard_Codes/decoder/parallel_decoder/parallel_decoder.vwf --testbench_file=/home/zero/Documents/UniAv/4_ano/ACA/Hadamard_Codes/decoder/parallel_decoder/simulation/qsim/parallel_decoder.vwf.vht
+quartus_eda --write_settings_files=off --simulation=on --functional=on --flatten_buses=off --tool=modelsim_oem --format=vhdl --output_directory=/home/zero/Documents/UniAv/4_ano/ACA/Hadamard_Codes/decoder/parallel_decoder/simulation/qsim/ parallel_decoder -c parallel_decoder
+quartus_eda --gen_testbench --tool=modelsim_oem --format=vhdl --write_settings_files=off parallel_decoder -c parallel_decoder --vector_source=/home/zero/Documents/UniAv/4_ano/ACA/Hadamard_Codes/decoder/parallel_decoder/parallel_decoder_normal.vwf --testbench_file=/home/zero/Documents/UniAv/4_ano/ACA/Hadamard_Codes/decoder/parallel_decoder/simulation/qsim/parallel_decoder_normal.vwf.vht
+quartus_eda --write_settings_files=off --simulation=on --functional=on --flatten_buses=off --tool=modelsim_oem --format=vhdl --output_directory=/home/zero/Documents/UniAv/4_ano/ACA/Hadamard_Codes/decoder/parallel_decoder/simulation/qsim/ parallel_decoder -c parallel_decoder
+quartus_eda --gen_testbench --tool=modelsim_oem --format=vhdl --write_settings_files=off parallel_decoder -c parallel_decoder --vector_source=/home/zero/Documents/UniAv/4_ano/ACA/Hadamard_Codes/decoder/parallel_decoder/parallel_decoder_1ERROR.vwf --testbench_file=/home/zero/Documents/UniAv/4_ano/ACA/Hadamard_Codes/decoder/parallel_decoder/simulation/qsim/parallel_decoder_1ERROR.vwf.vht
+quartus_eda --gen_testbench --tool=modelsim_oem --format=vhdl --write_settings_files=off parallel_decoder -c parallel_decoder --vector_source=/home/zero/Documents/UniAv/4_ano/ACA/Hadamard_Codes/decoder/parallel_decoder/parallel_decoder_1ERROR.vwf --testbench_file=/home/zero/Documents/UniAv/4_ano/ACA/Hadamard_Codes/decoder/parallel_decoder/simulation/qsim/parallel_decoder_1ERROR.vwf.vht
 quartus_eda --write_settings_files=off --simulation=on --functional=on --flatten_buses=off --tool=modelsim_oem --format=vhdl --output_directory=/home/zero/Documents/UniAv/4_ano/ACA/Hadamard_Codes/decoder/parallel_decoder/simulation/qsim/ parallel_decoder -c parallel_decoder
 
 
