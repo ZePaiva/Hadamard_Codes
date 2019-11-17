@@ -103,3 +103,18 @@ ARCHITECTURE logicFunction OF gateAnd4 IS
 BEGIN
 	y <= x1 AND x2 AND x3 AND x4;
 END logicFunction;
+
+LIBRARY ieee;
+USE ieee.std_logic_1164.all;
+
+ENTITY gateNot IS
+  PORT (x: IN  STD_LOGIC;
+        y : OUT STD_LOGIC);
+END gateNot;
+
+ARCHITECTURE logicFunction OF gateNot IS
+BEGIN
+	y <= NOT x;
+END logicFunction;
+
+

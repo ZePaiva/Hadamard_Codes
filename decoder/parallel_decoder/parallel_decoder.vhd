@@ -41,6 +41,10 @@ ARCHITECTURE structure OF mbit_decoder IS
 		PORT (x1, x2 : IN  STD_LOGIC;
 				y:			OUT STD_LOGIC);
 	END COMPONENT;
+	COMPONENT gateNot
+		PORT (x: IN  STD_LOGIC;
+				y:	OUT STD_LOGIC);
+	END COMPONENT;
 	
 BEGIN
 
@@ -50,24 +54,26 @@ BEGIN
 	mc2    : gateXor2  PORT MAP (i_x4, i_x5, mc(2));
 	mc3    : gateXor2  PORT MAP (i_x6, i_x7, mc(3));
 
-	-- C3-0 equations calculations
+	-- C3-0 equations calculations for one
 	m_And01 : gateAnd2  PORT MAP (mc(1), mc(0), mAnd01);
 	m_And23 : gateAnd2  PORT MAP (mc(2), mc(3), mAnd23);
-	m_Or01  : gateOr2	 PORT MAP (mc(1), mc(0), mOr01);
-	m_Or23	 : gateOr2	 PORT MAP (mc(2), mc(3), mOr23);
-	m_NAnd01: gateNand2 PORT MAP (mc(0), mc(1), mNAnd01);
-	m_NAnd23: gateNand2 PORT MAP (mc(2), mc(3), mNAnd23);
-	m_NOr01 : gateNor2	 PORT MAP (mc(0), mc(1), mNOr01);
-	m_NOr23 : gateNor2	 PORT MAP (mc(2), mc(3), mNOr23);
+	m_Or01  : gateOr2	  PORT MAP (mc(1), mc(0), mOr01);
+	m_Or23  : gateOr2	  PORT MAP (mc(2), mc(3), mOr23);
+	
+	-- C3-0 equations calculations for zero
+	m_NAnd01 : gateNot PORT MAP (mAnd01, mNAnd01);
+	m_NAnd23 : gateNot PORT MAP (mAnd23, mNAnd23);
+	m_NOr01  : gateNot PORT MAP (mOr01,  mNOr01);
+	m_NOr23  : gateNot PORT MAP (mOr23,  mNOr23);
 	
 	-- One calculations
-	m1C1 	 : gateAnd2  PORT MAP (mAnd01, mOr23, mOneC1);
-	m1C2 	 : gateAnd2  PORT MAP (mAnd23, mOr01, mOneC2);
+	m1C1 	 : gateAnd2  PORT MAP (mAnd01, mOr23,  mOneC1);
+	m1C2 	 : gateAnd2  PORT MAP (mAnd23, mOr01,  mOneC2);
 	m1		 : gateOr2	 PORT MAP (mOneC1, mOneC2, mOne);
 		
 	-- Zero calculations
-	m0C1 	 : gateAnd2  PORT MAP (mNAnd01, mNOr23, mZeroC1);
-	m0C2 	 : gateAnd2  PORT MAP (mNAnd23, mNOr01, mZeroC2);
+	m0C1 	 : gateAnd2  PORT MAP (mNAnd01, mNOr23,  mZeroC1);
+	m0C2 	 : gateAnd2  PORT MAP (mNAnd23, mNOr01,  mZeroC2);
 	m0		 : gateOr2	 PORT MAP (mZeroC1, mZeroC2, mZero);
 	
 	-- check validity

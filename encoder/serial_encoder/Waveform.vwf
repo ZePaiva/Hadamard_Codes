@@ -23,6 +23,7 @@ quit -f
 
 
 
+
 </modelsim_script>
 <modelsim_script_timing>onerror {exit -code 1}
 vlib work
@@ -41,6 +42,7 @@ proc simTimestamp {} {
 after 2500 simTimestamp
 run -all
 quit -f
+
 
 
 
@@ -201,44 +203,14 @@ SIGNAL("nGRst")
 	PARENT = "";
 }
 
-SIGNAL("btc")
+SIGNAL("valid")
 {
 	VALUE_TYPE = NINE_LEVEL_BIT;
-	SIGNAL_TYPE = BUS;
-	WIDTH = 3;
-	LSB_INDEX = 0;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
 	DIRECTION = OUTPUT;
 	PARENT = "";
-}
-
-SIGNAL("btc[2]")
-{
-	VALUE_TYPE = NINE_LEVEL_BIT;
-	SIGNAL_TYPE = SINGLE_BIT;
-	WIDTH = 1;
-	LSB_INDEX = -1;
-	DIRECTION = OUTPUT;
-	PARENT = "btc";
-}
-
-SIGNAL("btc[1]")
-{
-	VALUE_TYPE = NINE_LEVEL_BIT;
-	SIGNAL_TYPE = SINGLE_BIT;
-	WIDTH = 1;
-	LSB_INDEX = -1;
-	DIRECTION = OUTPUT;
-	PARENT = "btc";
-}
-
-SIGNAL("btc[0]")
-{
-	VALUE_TYPE = NINE_LEVEL_BIT;
-	SIGNAL_TYPE = SINGLE_BIT;
-	WIDTH = 1;
-	LSB_INDEX = -1;
-	DIRECTION = OUTPUT;
-	PARENT = "btc";
 }
 
 TRANSITION_LIST("clk")
@@ -353,25 +325,7 @@ TRANSITION_LIST("nGRst")
 	}
 }
 
-TRANSITION_LIST("btc[2]")
-{
-	NODE
-	{
-		REPEAT = 1;
-		LEVEL X FOR 1000.0;
-	}
-}
-
-TRANSITION_LIST("btc[1]")
-{
-	NODE
-	{
-		REPEAT = 1;
-		LEVEL X FOR 1000.0;
-	}
-}
-
-TRANSITION_LIST("btc[0]")
+TRANSITION_LIST("valid")
 {
 	NODE
 	{
@@ -409,17 +363,17 @@ DISPLAY_LINE
 
 DISPLAY_LINE
 {
-	CHANNEL = "btc";
+	CHANNEL = "code";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Binary;
 	TREE_INDEX = 3;
 	TREE_LEVEL = 0;
-	CHILDREN = 4, 5, 6;
+	CHILDREN = 4, 5, 6, 7, 8, 9, 10, 11;
 }
 
 DISPLAY_LINE
 {
-	CHANNEL = "btc[2]";
+	CHANNEL = "code[7]";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Binary;
 	TREE_INDEX = 4;
@@ -429,7 +383,7 @@ DISPLAY_LINE
 
 DISPLAY_LINE
 {
-	CHANNEL = "btc[1]";
+	CHANNEL = "code[6]";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Binary;
 	TREE_INDEX = 5;
@@ -439,7 +393,7 @@ DISPLAY_LINE
 
 DISPLAY_LINE
 {
-	CHANNEL = "btc[0]";
+	CHANNEL = "code[5]";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Binary;
 	TREE_INDEX = 6;
@@ -449,52 +403,12 @@ DISPLAY_LINE
 
 DISPLAY_LINE
 {
-	CHANNEL = "code";
-	EXPAND_STATUS = COLLAPSED;
-	RADIX = Binary;
-	TREE_INDEX = 7;
-	TREE_LEVEL = 0;
-	CHILDREN = 8, 9, 10, 11, 12, 13, 14, 15;
-}
-
-DISPLAY_LINE
-{
-	CHANNEL = "code[7]";
-	EXPAND_STATUS = COLLAPSED;
-	RADIX = Binary;
-	TREE_INDEX = 8;
-	TREE_LEVEL = 1;
-	PARENT = 7;
-}
-
-DISPLAY_LINE
-{
-	CHANNEL = "code[6]";
-	EXPAND_STATUS = COLLAPSED;
-	RADIX = Binary;
-	TREE_INDEX = 9;
-	TREE_LEVEL = 1;
-	PARENT = 7;
-}
-
-DISPLAY_LINE
-{
-	CHANNEL = "code[5]";
-	EXPAND_STATUS = COLLAPSED;
-	RADIX = Binary;
-	TREE_INDEX = 10;
-	TREE_LEVEL = 1;
-	PARENT = 7;
-}
-
-DISPLAY_LINE
-{
 	CHANNEL = "code[4]";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Binary;
-	TREE_INDEX = 11;
+	TREE_INDEX = 7;
 	TREE_LEVEL = 1;
-	PARENT = 7;
+	PARENT = 3;
 }
 
 DISPLAY_LINE
@@ -502,9 +416,9 @@ DISPLAY_LINE
 	CHANNEL = "code[3]";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Binary;
-	TREE_INDEX = 12;
+	TREE_INDEX = 8;
 	TREE_LEVEL = 1;
-	PARENT = 7;
+	PARENT = 3;
 }
 
 DISPLAY_LINE
@@ -512,9 +426,9 @@ DISPLAY_LINE
 	CHANNEL = "code[2]";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Binary;
-	TREE_INDEX = 13;
+	TREE_INDEX = 9;
 	TREE_LEVEL = 1;
-	PARENT = 7;
+	PARENT = 3;
 }
 
 DISPLAY_LINE
@@ -522,9 +436,9 @@ DISPLAY_LINE
 	CHANNEL = "code[1]";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Binary;
-	TREE_INDEX = 14;
+	TREE_INDEX = 10;
 	TREE_LEVEL = 1;
-	PARENT = 7;
+	PARENT = 3;
 }
 
 DISPLAY_LINE
@@ -532,9 +446,18 @@ DISPLAY_LINE
 	CHANNEL = "code[0]";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Binary;
-	TREE_INDEX = 15;
+	TREE_INDEX = 11;
 	TREE_LEVEL = 1;
-	PARENT = 7;
+	PARENT = 3;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "valid";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Binary;
+	TREE_INDEX = 12;
+	TREE_LEVEL = 0;
 }
 
 TIME_BAR
