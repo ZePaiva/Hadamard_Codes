@@ -28,37 +28,6 @@ END behavior;
 LIBRARY ieee;
 USE ieee.std_logic_1164.all;
 
-LIBRARY simpleLogic;
-USE simpleLogic.all;
-
-ENTITY binCounter_3bit IS
-  PORT (nRst: IN STD_LOGIC;
-        clk:  IN STD_LOGIC;
-        c:    OUT STD_LOGIC_VECTOR (2 DOWNTO 0));
-END binCounter_3bit;
-
-ARCHITECTURE structure OF binCounter_3bit IS
-	SIGNAL s_q0, s_q1, s_q2, s_d2: STD_LOGIC;
-  COMPONENT gateAnd2
-    PORT (x1, x2: IN STD_LOGIC;
-          y:      OUT STD_LOGIC);
-  END COMPONENT;
-  COMPONENT flipFlopDPET
-    PORT (clk, D:     IN STD_LOGIC;
-          nSet, nRst: IN STD_LOGIC;
-          Q, nQ:      OUT STD_LOGIC);
-  END COMPONENT;
-BEGIN
-  ff0: flipFlopDPET PORT MAP (clk, '1', '1', nRst, s_q0);
-  ff1: flipFlopDPET PORT MAP (clk, s_q0, '1', s_q0, s_q1);
-  q0andq1: gateAnd2 PORT MAP (s_q0, s_q1, s_d2); 
-  ff2: flipFlopDPET PORT MAP (clk, s_d2, '1', s_d2, s_q2);
-  c <= s_q2 & s_q1 & s_q0;
-END structure;
-
-LIBRARY ieee;
-USE ieee.std_logic_1164.all;
-
 ENTITY ParReg_8bit IS
   PORT (nSet: IN STD_LOGIC;
 			nRst: IN STD_LOGIC;
@@ -85,3 +54,44 @@ BEGIN
 
 END structure;
 
+LIBRARY ieee;
+USE ieee.std_logic_1164.all;
+
+LIBRARY simpleLogic;
+USE simpleLogic.all;
+
+ENTITY binCounter_3bit IS
+  PORT (nRst: IN STD_LOGIC;
+        clk:  IN STD_LOGIC;
+        c:    OUT STD_LOGIC_VECTOR (2 DOWNTO 0));
+END binCounter_3bit;
+
+ARCHITECTURE structure OF binCounter_3bit IS
+  SIGNAL pD1: STD_LOGIC;
+  SIGNAL iD1, iD2: STD_LOGIC;
+  SIGNAL iQ0, iQ1, iQ2: STD_LOGIC;
+  SIGNAL inQ0: STD_LOGIC;
+  COMPONENT gateAnd2
+    PORT (x1, x2: IN STD_LOGIC;
+          y:      OUT STD_LOGIC);
+  END COMPONENT;
+  COMPONENT gateXor2
+    PORT (x1, x2: IN STD_LOGIC;
+          y:      OUT STD_LOGIC);
+  END COMPONENT;
+  COMPONENT flipFlopDPET
+    PORT (clk, D:     IN STD_LOGIC;
+          nSet, nRst: IN STD_LOGIC;
+          Q, nQ:      OUT STD_LOGIC);
+  END COMPONENT;
+BEGIN
+  ad1: gateAnd2 PORT MAP (iQ0, iQ1, pD1);
+  xr1: gateXor2 PORT MAP (iQ0, iQ1, iD1);
+  xr2: gateXor2 PORT MAP (pD1, iQ2, iD2);
+  ff0: flipFlopDPET PORT MAP (clk, inQ0, '1', nRst, iQ0, inQ0);
+  ff1: flipFlopDPET PORT MAP (clk, iD1,  '1', nRst, iQ1);
+  ff2: flipFlopDPET PORT MAP (clk, iD2,  '1', nRst, iQ2);
+  c(0) <= iQ0;
+  c(1) <= iQ1;
+  c(2) <= iQ2;
+ END structure;

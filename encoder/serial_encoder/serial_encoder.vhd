@@ -61,11 +61,11 @@ ARCHITECTURE structure OF serial_encoder IS
 BEGIN
   ff:  flipFlopDPET PORT MAP (clk, mIn, '1', iNRst, s_Q);
   s_Qto8 <= (OTHERS=>s_Q);
-  and8:  gateAnd8 PORT MAP (s_Qto8, s_f, s_and2xor);
+  and8: gateAnd8 PORT MAP (s_Qto8, s_f, s_and2xor);
   xor8: gateXor8 PORT MAP (s_and2xor, s_xorIn, s_xorOut);
-  pr8: ParReg_8bit PORT MAP ('1', iNRst, clk, s_xorOut, s_xorIn);
-  bc:  binCounter_3bit PORT MAP (iNRst, clk, stat);
-  con: control  PORT MAP (nGRst, clk, stat, iNRst, iNSetO, s_f, clkO);
+  pr8:  ParReg_8bit PORT MAP ('1', iNRst, clk, s_xorOut, s_xorIn);
+  bc:   binCounter_3bit PORT MAP (iNRst, clk, stat);
+  con:  control  PORT MAP (nGRst, clk, stat, iNRst, iNSetO, s_f, clkO);
   finalpr8: ParReg_8bit PORT MAP (iNSetO, '1', clkO, s_xorOut, s_code);
   code <= s_code;
 END structure;

@@ -12,14 +12,14 @@ ARCHITECTURE behavior OF contMem IS
 BEGIN
   PROCESS (add)
     TYPE CMem IS ARRAY(0 TO 7) OF STD_LOGIC_VECTOR (10 DOWNTO 0);
-    VARIABLE prog: CMem := (CONV_STD_LOGIC_VECTOR (16#7FF#, 11),  -- nRst = 1   nSetO = 1   nEnClk = 1   00
-                            CONV_STD_LOGIC_VECTOR (16#7F#, 11),  -- nRst = 1   nSetO = 1   nEnClk = 1   01
-                            CONV_STD_LOGIC_VECTOR (16#19F#, 11),  -- nRst = 1   nSetO = 1   nEnClk = 1   02
-                            CONV_STD_LOGIC_VECTOR (16#2AF#, 11),  -- nRst = 1   nSetO = 1   nEnClk = 1   03
-                            CONV_STD_LOGIC_VECTOR (16#3#, 11),  -- nRst = 0   nSetO = 1   nEnClk = 1   04
-                            CONV_STD_LOGIC_VECTOR (16#7#, 11),  -- nRst = 1   nSetO = 1   nEnClk = 1   05
-                            CONV_STD_LOGIC_VECTOR (16#7#, 11),  -- nRst = 1   nSetO = 1   nEnClk = 1   06
-                            CONV_STD_LOGIC_VECTOR (16#7#, 11)  -- nRst = 1   nSetO = 1   nEnClk = 1   07
+    VARIABLE prog: CMem := (CONV_STD_LOGIC_VECTOR (16#5#, 11),    -- nRst = 1   nSetO = 0   nEnClk = 1   START
+									 CONV_STD_LOGIC_VECTOR (16#7FF#, 11),  -- nRst = 1   nSetO = 1   nEnClk = 1   M0
+                            CONV_STD_LOGIC_VECTOR (16#7F#, 11),   -- nRst = 1   nSetO = 1   nEnClk = 1   M1
+                            CONV_STD_LOGIC_VECTOR (16#19F#, 11),  -- nRst = 1   nSetO = 1   nEnClk = 1   M2
+                            CONV_STD_LOGIC_VECTOR (16#2AE#, 11),  -- nRst = 1   nSetO = 1   nEnClk = 0   M3 - REZ
+                            CONV_STD_LOGIC_VECTOR (16#6#, 11),    -- nRst = 0   nSetO = 1   nEnClk = 1   REZ
+                            CONV_STD_LOGIC_VECTOR (16#1#, 11),    -- nRst = 0   nSetO = 1   nEnClk = 1   RESET
+									 CONV_STD_LOGIC_VECTOR (16#7#, 11)     -- nRst = 1   nSetO = 1   nEnClk = 1   NOP
 									 );
                          
     VARIABLE pos: INTEGER;

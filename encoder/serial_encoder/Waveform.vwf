@@ -20,6 +20,11 @@ proc simTimestamp {} {
 after 2500 simTimestamp
 run -all
 quit -f
+
+
+
+
+
 </modelsim_script>
 <modelsim_script_timing>onerror {exit -code 1}
 vlib work
@@ -38,6 +43,11 @@ proc simTimestamp {} {
 after 2500 simTimestamp
 run -all
 quit -f
+
+
+
+
+
 </modelsim_script_timing>
 <hdl_lang>vhdl</hdl_lang>
 </simulation_settings>*/
@@ -201,11 +211,14 @@ TRANSITION_LIST("mIn")
 	NODE
 	{
 		REPEAT = 1;
-		LEVEL 0 FOR 50.0;
-		LEVEL 1 FOR 20.0;
-		LEVEL 0 FOR 20.0;
-		LEVEL 1 FOR 20.0;
-		LEVEL 0 FOR 890.0;
+		LEVEL 0 FOR 60.0;
+		LEVEL 1 FOR 10.0;
+		LEVEL 0 FOR 30.0;
+		LEVEL 1 FOR 10.0;
+		LEVEL 0 FOR 30.0;
+		LEVEL 1 FOR 10.0;
+		LEVEL 0 FOR 40.0;
+		LEVEL 1 FOR 810.0;
 	}
 }
 
@@ -286,8 +299,7 @@ TRANSITION_LIST("nGRst")
 	NODE
 	{
 		REPEAT = 1;
-		LEVEL 1 FOR 10.0;
-		LEVEL 0 FOR 990.0;
+		LEVEL 1 FOR 1000.0;
 	}
 }
 
@@ -298,9 +310,9 @@ TRANSITION_LIST("clk")
 		REPEAT = 1;
 		NODE
 		{
-			REPEAT = 50;
-			LEVEL 0 FOR 10.0;
-			LEVEL 1 FOR 10.0;
+			REPEAT = 100;
+			LEVEL 0 FOR 5.0;
+			LEVEL 1 FOR 5.0;
 		}
 	}
 }
