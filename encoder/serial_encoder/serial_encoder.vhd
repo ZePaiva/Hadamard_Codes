@@ -18,7 +18,7 @@ ENTITY serial_encoder IS
 		  clk:   IN STD_LOGIC;
 		  mIn:   IN STD_LOGIC;
 		  code:  OUT STD_LOGIC_VECTOR (7 DOWNTO 0);
-		  valid:	OUT STD_LOGIC);
+		  v:	OUT STD_LOGIC);
 END serial_encoder;
 
 ARCHITECTURE structure OF serial_encoder IS
@@ -59,6 +59,10 @@ ARCHITECTURE structure OF serial_encoder IS
 		  f:		OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
         clkO:  OUT STD_LOGIC);
   END COMPONENT;
+  COMPONENT validOutput
+		PORT (x1, x2, y: IN STD_LOGIC;
+				z:      OUT STD_LOGIC);
+  END COMPONENT;
 BEGIN
   ff:  flipFlopDPET PORT MAP (clk, mIn, '1', iNRst, s_Q);
   s_Qto8 <= (OTHERS=>s_Q);
@@ -69,6 +73,6 @@ BEGIN
   con:  control  PORT MAP (nGRst, clk, stat, iNRst, iNSetO, s_f, clkO);
   finalpr8: ParReg_8bit PORT MAP (iNSetO, '1', clkO, s_xorOut, s_code);
   code <= s_code;
-  valid <= iNRst;
+  validOut: validOutput PORT MAP(stat(2), stat(0), clkO, v);
 END structure;
 

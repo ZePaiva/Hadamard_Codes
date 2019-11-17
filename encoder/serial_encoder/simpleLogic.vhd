@@ -53,12 +53,25 @@ END logicFunction;
 LIBRARY ieee;
 USE ieee.std_logic_1164.all;
 
+ENTITY gateOr2 IS
+  PORT (x1, x2: IN STD_LOGIC;
+        y:      OUT STD_LOGIC);
+END gateOr2;
+
+ARCHITECTURE logicFunction OF gateOr2 IS
+BEGIN
+	y <= x1 or x2;
+END logicFunction;
+
+LIBRARY ieee;
+USE ieee.std_logic_1164.all;
+
 ENTITY gateAnd8 IS
   PORT (x1, x2: IN STD_LOGIC_VECTOR(7 DOWNTO 0);
         y:      OUT STD_LOGIC_VECTOR(7 DOWNTO 0));
 END gateAnd8;
 
-ARCHITECTURE logicFunction OF gateAnd8 IS
+ARCHITECTURE structure OF gateAnd8 IS
 	COMPONENT gateAnd2
 		PORT (x1, x2: IN STD_LOGIC;
         y:      OUT STD_LOGIC);
@@ -72,7 +85,7 @@ BEGIN
 	bit2: gateAnd2 PORT MAP (x1(2), x2(2), y(2));
 	bit1: gateAnd2 PORT MAP (x1(1), x2(1), y(1));
 	bit0: gateAnd2 PORT MAP (x1(0), x2(0), y(0));
-END logicFunction;
+END structure;
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.all;
@@ -82,7 +95,7 @@ ENTITY gateXor8 IS
         y:      OUT STD_LOGIC_VECTOR(7 DOWNTO 0));
 END gateXor8;
 
-ARCHITECTURE logicFunction OF gateXor8 IS
+ARCHITECTURE structure OF gateXor8 IS
 	COMPONENT gateXor2
 		PORT (x1, x2: IN STD_LOGIC;
         y:      OUT STD_LOGIC);
@@ -96,5 +109,29 @@ BEGIN
 	bit2: gateXor2 PORT MAP (x1(2), x2(2), y(2));
 	bit1: gateXor2 PORT MAP (x1(1), x2(1), y(1));
 	bit0: gateXor2 PORT MAP (x1(0), x2(0), y(0));
-END logicFunction;
+END structure;
+
+LIBRARY ieee;
+USE ieee.std_logic_1164.all;
+
+ENTITY validOutput IS
+  PORT (x1, x2, y: IN STD_LOGIC;
+        z:      OUT STD_LOGIC);
+END validOutput;
+
+ARCHITECTURE structure OF validOutput IS
+	SIGNAL s_and2: STD_LOGIC;
+	COMPONENT gateAnd2
+		PORT (x1, x2: IN STD_LOGIC;
+        y:      OUT STD_LOGIC);
+	END COMPONENT;
+	COMPONENT gateOr2
+		PORT (x1, x2: IN STD_LOGIC;
+        y:      OUT STD_LOGIC);
+	END COMPONENT;
+BEGIN
+	and2: gateAnd2 PORT MAP (x1, x2, s_and2);
+	or2: 	gateOr2 PORT MAP (s_and2, y, z);
+END structure;
+
 
